@@ -4,7 +4,7 @@ package comum;
 public class Lista<T extends Comparable<T>>{
     private No inicio;
     private int size;
-    
+
     public boolean add(T element, int index){
         if(!verifyIndex(index)){
             return false;
@@ -42,7 +42,6 @@ public class Lista<T extends Comparable<T>>{
                 No novoInicio = new No(element, inicio);
                 inicio = novoInicio;
             }else{
-
                 if(previousLowerNo.getProximo() == null){
                     previousLowerNo.setProximo(new No(element));
                 }else{
@@ -76,7 +75,16 @@ public class Lista<T extends Comparable<T>>{
         if(!verifyIndex(index)){
             return null;
         }else{
+            if(index == 0){
+                No removeNo = inicio;
+                
+                inicio = removeNo.getProximo();
+                removeNo.setProximo(null);
 
+                size--;
+                return removeNo.getInfo();
+            }
+            
             No PreviousNo = getPreviousNo(index);
 
             if(PreviousNo.getProximo() == null){
@@ -84,13 +92,40 @@ public class Lista<T extends Comparable<T>>{
             }else{
                 No removeNo = PreviousNo.getProximo();
 
-                if(removeNo.getProximo() != null){
-                    PreviousNo.setProximo(removeNo.getProximo());
-                    removeNo.setProximo(null);
-                }
+                PreviousNo.setProximo(removeNo.getProximo());
+                removeNo.setProximo(null);
+                
+                size--;
                 return removeNo.getInfo();
             }
         }
+    }
+    
+    public int search(T element){
+        No aux;
+        aux = inicio;
+        T aux_element = aux.getInfo();
+
+        for (int i = 0; i < size; i++) {
+            if(aux_element.compareTo(element) == 0){
+                return i;
+            }
+            aux = aux.proximo;
+            aux_element = aux.getInfo();
+        }
+        return -1;
+
+    }
+
+
+    public Lista<T> split(int begin, int end){
+        Lista<T> novaLista = new Lista<T>();
+
+        for (int i = begin; i <= end; i++) {
+            novaLista.addLast(get(i));
+        }
+
+        return novaLista;
     }
     
     private No getPreviousNo(int index){

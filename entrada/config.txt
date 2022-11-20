@@ -1,0 +1,13 @@
+
+Para executar no cmd: java -jar "Java Boys_ATV_Busca e Ordenação.jar" ORDEM
+
+ORDEM: o número da ordem que a árvore B vai se basear;
+
+base de dados inicial.txt: Os números que vão ser adicionados primeiramente na árovre B
+comandos.txt: cada linha representa uma operação que vai ser realizada na árvore B, dentre elas:
+    adicionar INTEIRO
+    remover INTEIRO
+    procurar INTEIRO
+    imprimir TIPO
+        INTEIRO: equivale a um número inteiro qualquer.
+        TIPO: pode ser 0 ou 1. As duas equivalem a uma forma preOrdem, mas 0 imprime toda as chaves e depois vai para os filhos(Ordem Crescente) e 1 imprime a primeira chave e depois vai para primeira filha e assim por diante,

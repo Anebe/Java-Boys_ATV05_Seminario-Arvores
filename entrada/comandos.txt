@@ -1,0 +1,5 @@
+criar 3
+imprimir 0
+remover 15
+imprimir 0
+procurar 45
